@@ -1,34 +1,15 @@
+import "reflect-metadata"
 import express, { request, response } from "express";
+import "./database"
+
+// rotas
+import {router} from "./routes"
 
 const app = express();
 
+app.use(express.json())
 
-// Rotas
-
-
-app.get("/",(request,response)=>{
-
-  return response.json({message:"ping"})
-
-
-})
-
-
-app.get("/users",(request,response)=>{
-  return response.json({message:"hello world"})
-})
-
-
-app.post("/",(request,response)=>{
-  return response.json({message:"os dados foram salvos com sucesso!"});
-})
-
-
-
-
-
-
-
+app.use(router);  
 
 app.listen(3333,()=> console.log("server is running "))
 
